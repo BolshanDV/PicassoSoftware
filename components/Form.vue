@@ -1,6 +1,5 @@
 <template>
-  <section class="company">
-    <section class="company__column">
+    <section class="company">
       <section class="container">
         <section class="company_title">
           <p>Компания</p>
@@ -13,7 +12,6 @@
             v-model="company"
             class="text-field__input"
             :class="{input_active: autocompleteObj.length}"
-
         >
         <section class="catalog"
                  v-if="autocompleteObj.length"
@@ -24,7 +22,7 @@
               @click="chooseCard(companyItem)"
           >
             <section class="card__img">
-              <img :src="companyItem.logo" alt="" class="logo">
+              <img :src="companyItem.logo" alt="" class="card__logo">
             </section>
             <section class="card__body">
               <div class="card__name">{{companyItem.name}}</div>
@@ -32,10 +30,8 @@
             </section>
           </div>
         </section>
-
       </section>
     </section>
-  </section>
 </template>
 
 <script>
@@ -77,15 +73,13 @@ export default {
 </script>
 
 <style scoped>
-.company{
+.company {
   width: 30%;
-}
-.company__column{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-.company_title{
+.company_title {
   font-family: 'Roboto',serif;
   font-style: normal;
   font-weight: 400;
@@ -93,23 +87,20 @@ export default {
   line-height: 20px;
   color: #484848;
 }
-.container{
+.container {
   margin-bottom: 8px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
-.company_input{
-  height: 33px;
-}
-.card{
+.card {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   padding: 2% 1%;
 }
-.logo {
+.card__logo {
   width: 54px;
   height: 54px;
 }

@@ -16,7 +16,6 @@ export default {
 <style scoped>
   .form{
     margin-top: 10vh;
-    /*width: 100vw;*/
   }
   .from__column{
     display: flex;

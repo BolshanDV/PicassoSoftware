@@ -36,13 +36,13 @@
 
 <script>
 import axios from "axios";
-
 export default {
   name: "Form",
   data() {
     return {
       company: "",
       autocompleteObj: [],
+      debounceTimeout: null,
     }
   },
   watch: {
@@ -50,20 +50,29 @@ export default {
       if (this.company === '') {
         this.autocompleteObj.length = 0
       }
-      this.getCompany()
+      this.debounceSearch()
     }
   },
+
   methods: {
+    debounceSearch: function() {
+      if (this.debounceTimeout) clearTimeout(this.debounceTimeout);
+      this.debounceTimeout = setTimeout(() => {
+        this.getCompany();
+      }, 500);
+    },
+
     getCompany() {
       axios
-          .get(`https://autocomplete.clearbit.com/v1/companies/suggest?query=${this.company}`)
-          .then(response => {
-            this.autocompleteObj = response.data
-          })
-          .catch(error => {
-            console.log(error);
-          })
+        .get(`https://autocomplete.clearbit.com/v1/companies/suggest?query=${this.company}`)
+        .then(response => {
+          this.autocompleteObj = response.data
+        })
+        .catch(error => {
+          console.log(error);
+        })
     },
+
     chooseCard(companyItem){
       this.company = companyItem.name
     }

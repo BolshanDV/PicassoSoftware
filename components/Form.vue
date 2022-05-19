@@ -61,7 +61,6 @@ export default {
         this.getCompany();
       }, 500);
     },
-
     getCompany() {
       axios
         .get(`https://autocomplete.clearbit.com/v1/companies/suggest?query=${this.company}`)
